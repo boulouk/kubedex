@@ -33,6 +33,7 @@ class ExperimentConfiguration:
         for type in types:
             all_topics[type] = []
             count = topology_configuration.topic()[type]
+            
             for i in range(count):
                 topic_name = topic_base_name + str(topic_index)
                 all_topics[type].append(topic_name)

@@ -7,7 +7,7 @@ spec:
   initContainers:
   - name: init-publisher
     image: busybox:1.28
-    command: ['sh', '-c', 'echo "waiting for setup"; sleep 90; echo "starting publishers"']
+    command: ['sh', '-c', 'echo "waiting for setup"; sleep 80; echo "starting publishers"']
   containers:
   - name: firedex
     image: hemanthmalla/firedex:latest

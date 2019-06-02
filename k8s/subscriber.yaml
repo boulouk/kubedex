@@ -4,7 +4,7 @@ metadata:
   name: subscriber
   namespace: firedex
 spec:
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
@@ -15,7 +15,7 @@ spec:
       initContainers:
       - name: init-subscriber
         image: busybox:1.28
-        command: ['sh', '-c', 'echo "waiting for setup"; sleep 60; echo "starting subscribers"']
+        command: ['sh', '-c', 'echo "waiting for setup"; sleep 50; echo "starting subscribers"']
       containers:
       - name: firedex
         image: hemanthmalla/firedex:latest
