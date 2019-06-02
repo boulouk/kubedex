@@ -8,23 +8,23 @@ BROKER = {
 
 TYPES = [ "deterministic", "random" ]
 
-TOPICS = 7
+TOPICS = 3
 TOPIC = {
-    "deterministic": 0,
-    "random": 7
+    "deterministic": 3,
+    "random": 0
 }
 
-SUBSCRIBERS = 3
+SUBSCRIBERS = 1
 SUBSCRIBER = {
     "scenario": [
         {
-            "count": 10,
+            "count": 1,
             "deterministic": {
-                "count": 0,
+                "count": 3,
                 "utility_function": { "average": 5, "lower_bound": 0.01, "upper_bound": 100 }
             },
             "random": {
-                "count": 7,
+                "count": 0,
                 "utility_function": { "average": 5, "lower_bound": 0.01, "upper_bound": 100 }
             }
         }
@@ -38,14 +38,14 @@ PUBLISHER = {
             "count": 1,
 
             "deterministic": {
-                "count": 0,
+                "count": 3,
                 "rate": { "average": 10, "lower_bound": 10, "upper_bound": 10 },
-                "size": { "average": 51, "lower_bound": 51, "upper_bound": 51 }
+                "size": { "average": 100, "lower_bound": 100, "upper_bound": 100 }
             },
             "random": {
-                "count": 7,
+                "count": 0,
                 "rate": { "average": 10, "lower_bound": 10, "upper_bound": 10 },
-                "size": { "average": 51, "lower_bound": 51, "upper_bound": 51 }
+                "size": { "average": 100, "lower_bound": 100, "upper_bound": 100 }
             }
         }
     ]

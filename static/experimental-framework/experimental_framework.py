@@ -104,6 +104,12 @@ def apply_experiment_configuration():
     )
 
     content = response.json()
+    content.append(
+    {"bandwidth": configuration.network_configuration.bandwidth(), 
+    "num_of_subscribers": len(configuration.experiment_configuration.subscribers()),
+    "num_of_topics":configuration.topology_configuration.topics(),
+     }) 
+   
     network_flows_file = open("/var/configuration/network_flows/network_flows.json", "w")
     network_flows_file.write( json.dumps(content, indent = 4) )
     network_flows_file.close()
@@ -141,7 +147,7 @@ def wait():
     experiment_duration = configuration.firedex_configuration.experiment_duration()
     print("Experiment started.")
 
-    to = experiment_duration + 200 
+    to = experiment_duration + 100 + 100 
     for i in range(1, to + 1):
         time.sleep(1)
         print(str(i) + " ---> " + str(to))

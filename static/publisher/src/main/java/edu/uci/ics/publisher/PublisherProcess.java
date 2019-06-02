@@ -73,6 +73,7 @@ public class PublisherProcess {
 	
 	private void scheduleEvent(String topic, Rate rate, int messageSize, int qualityOfService, boolean retained) {
 		int delay = (int) (rate.next() * 1000);
+		System.out.println(delay);
 		scheduler.schedule( () -> publishEvent(topic, rate, messageSize, qualityOfService, retained), delay, TimeUnit.MILLISECONDS);
 	}
 	

@@ -1,5 +1,6 @@
 package edu.uci.ics.application;
 
+import java.io.FileReader;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -13,12 +14,19 @@ import edu.uci.ics.publisher.PublisherProcess;
 import edu.uci.ics.utility.JsonUtility;
 import edu.uci.ics.utility.LoggerUtility;
 
+import org.json.simple.parser.JSONParser;
+
 public class Application {
 
 	public static void main(String[] args) {
 		try {
-			String configurationFile = args[0];
-			Configuration configuration = configuration(configurationFile);
+
+			JSONParser jsonParser = new JSONParser();	
+
+			String filePath = "publisher_configurations/pub0.json";
+			FileReader reader = new FileReader(filePath);
+
+			Configuration configuration = JsonUtility.fromJson(jsonParser.parse(reader).toString(), Configuration.class);
 			
 			initializeApplication(configuration);
 			

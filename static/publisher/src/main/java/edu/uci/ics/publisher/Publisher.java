@@ -19,6 +19,7 @@ public class Publisher {
 	
 	public void publish(String topic, Event event, int qualityOfService, boolean retained) throws FiredexException {
 		byte[] content = Event.serialize(event);
+
 		brokerConnection.publish(topic, content, qualityOfService, retained);
 		
 		String publisher = event.getPublisher();
