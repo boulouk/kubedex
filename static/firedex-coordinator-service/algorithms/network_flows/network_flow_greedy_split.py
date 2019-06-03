@@ -7,12 +7,14 @@ class NetworkFlowGreedySplit:
         pass
 
     def apply(self, network_configuration, firedex_configuration, experiment_configuration):
-        network_flows = range(10001, 10001 + firedex_configuration["network_flows"])
+        #network_flows = range(10001, 10001 + firedex_configuration["network_flows"])
 
         result = []
-
+        sub_cnt = 0
         experiment_subscribers = experiment_configuration["subscribers"]
         for experiment_subscriber in experiment_subscribers:
+            start = 10001 + (sub_cnt * 20)
+            network_flows = range(start, start + firedex_configuration["network_flows"])
             subscriber = experiment_subscriber["subscriber"]
 
             identifier = subscriber["identifier"]
@@ -29,8 +31,12 @@ class NetworkFlowGreedySplit:
                     "subscriptions": []
                 }
                 result.append(subscriber_network_flow)
+            sub_cnt = sub_cnt + 1
 
+        sub_cnt = 0
         for experiment_subscriber in experiment_subscribers:
+            start = 10001 + (sub_cnt * 20)
+            network_flows = range(start, start + firedex_configuration["network_flows"])
             subscriber = experiment_subscriber["subscriber"]
 
             identifier = subscriber["identifier"]
@@ -55,6 +61,7 @@ class NetworkFlowGreedySplit:
                         "topic": topic,
                         "utility_function": utility_function
                     })
+            sub_cnt = sub_cnt + 1
 
         result = self.__remove_empty_network_flows(result)
 
